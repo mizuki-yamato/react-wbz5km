@@ -55,7 +55,12 @@ export const App = () => {
 
   return (
     <>
-      <InputTodo tosoText={todoText} onClick={onClickAdd} onChange={onChangeTotoText} placeHolder={"タスクを入力"}/>
+      <InputTodo tosoText={todoText} onClick={onClickAdd} onChange={onChangeTotoText} placeHolder={"タスクを入力"} disabled={incompleteTodos.length >= 5}/>
+      {
+      (incompleteTodos.length >= 5 ) && (
+        <p style={{color: 'red'}}>登録できるタスクは5個までですよ～</p>
+      )
+      }
       <IncompleteTodos onClickComplete={onClickComplete} onClickDelete={onClickDelete} incompleteTodos={incompleteTodos}/>
       <CompleteTodos onClickBack={onClickBack} completeTodos={completeTodos}/>
     </>
